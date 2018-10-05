@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
+import { CommentComponent } from './components/comment/comment.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { TweetService } from './tweet.service';
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'create', component: CreateComponent },
   { path: 'edit/:id', component: EditComponent },
   { path: 'list', component: ListComponent },
-  { path: '', redirectTo: '/list', pathMatch: 'full'}
+  { path: 'comment', component: CommentComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -34,7 +36,8 @@ const routes: Routes = [
     AppComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

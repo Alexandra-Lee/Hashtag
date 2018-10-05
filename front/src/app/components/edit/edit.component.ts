@@ -41,10 +41,10 @@ export class EditComponent implements OnInit {
   }
 
   updateTweet(username, tweet_message, comments) {
-    this.tweetService.updateTweet(this.id, username, tweet_message, comments).subscribe(() => {
-      this.snackBar.open('Tweet updated successfully', 'OK', {
-        duration: 3000,
-      });
-    });
+
+    this.route.params.subscribe(params => {
+      this.tweetService.updateTweet(username, tweet_message, comments, params['id']);
+      this.router.navigate(['list']);
+   });
 }
 }

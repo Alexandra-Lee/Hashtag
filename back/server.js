@@ -1,9 +1,9 @@
 // import Tweet from './models/Tweet';
 const express = require('express'),
-path = require('path'),
-bodyParser = require('body-parser'),
-cors = require('cors'),
-mongoose = require('mongoose');
+    path = require('path'),
+    bodyParser = require('body-parser'),
+    cors = require('cors'),
+    mongoose = require('mongoose');
 const app = express();
 const router = express.Router();
 const Tweet = require('./models/Tweet');
@@ -17,7 +17,9 @@ app.use(function (req, res, next) {
 })
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/tweets',  { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost:27017/tweets', {
+    useNewUrlParser: true
+});
 
 const connection = mongoose.connection;
 
@@ -47,7 +49,9 @@ router.route('/tweets/add').post((req, res) => {
     let tweet = new Tweet(req.body);
     tweet.save()
         .then(tweet => {
-            res.status(200).json({'tweet': 'Added successfully'});
+            res.status(200).json({
+                'tweet': 'Added successfully'
+            });
         })
         .catch(err => {
             res.status(400).send('Failed to create new tweet');
@@ -56,9 +60,14 @@ router.route('/tweets/add').post((req, res) => {
 
 router.route('/tweets/update/:id').post((req, res) => {
     Tweet.findById(req.params.id, (err, tweet) => {
-        if (!tweet)
+        if (!tweet) {
+            console.log(err);
+            console.log(req);
             return next(new Error('Could not load your tweet'));
-        else {
+
+        } else {
+            console.log(tweet);
+            console.log(req);
             tweet.username = req.body.username;
             tweet.tweet_message = req.body.tweet_message;
             tweet.comments = req.body.comments;
@@ -73,7 +82,9 @@ router.route('/tweets/update/:id').post((req, res) => {
 });
 
 router.route('/tweets/delete/:id').get((req, res) => {
-    Tweet.findByIdAndRemove({_id: req.params.id}, (err, tweet) => {
+    Tweet.findByIdAndRemove({
+        _id: req.params.id
+    }, (err, tweet) => {
         if (err)
             res.json(err);
         else
