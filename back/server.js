@@ -1,12 +1,20 @@
-import express from 'express';
-import cors from 'cors';
-import bodyParser from 'body-parser';
-import mongoose from 'mongoose';
-import Tweet from './models/Tweet';
+// import Tweet from './models/Tweet';
+const express = require('express'),
+path = require('path'),
+bodyParser = require('body-parser'),
+cors = require('cors'),
+mongoose = require('mongoose');
 const app = express();
 const router = express.Router();
+const Tweet = require('./models/Tweet');
 
 app.use(cors());
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    next();
+})
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/tweets',  { useNewUrlParser: true });

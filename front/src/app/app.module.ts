@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule,
   MatFormFieldModule,
@@ -17,7 +18,9 @@ import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 import { RouterModule, Routes } from '@angular/router';
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { TweetService } from './tweet.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'create', component: CreateComponent },
@@ -37,6 +40,8 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
+    SlimLoadingBarModule,
+    HttpClientModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
@@ -47,7 +52,8 @@ const routes: Routes = [
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule
   ],
   providers: [TweetService],
   bootstrap: [AppComponent]

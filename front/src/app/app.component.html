@@ -1,15 +1,28 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+<ng2-slim-loading-bar color="blue"></ng2-slim-loading-bar>
   <nav>
     <div class="nav-wrapper" style="background-color: black">
-      <a routerLink="/"><img src="../assets/img/Hashtag.png" alt="logo" height="100%" style="margin-right: 50px"/></a>
+      <a routerLink="/"><img src="../assets/img/Hashtag.png" alt="logo" height="98%" style="margin-right: 35px; margin-left: 10px"/></a>
       <a class="brand-logo" routerLink="/">H A S H T A G</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="">Sign Up!</a></li>
-        <li><a href="">Login</a></li>
+      <ul id="nav-mobile" class="right">
+      <li class="nav-item">
+          <a routerLink="create" class="nav-link" routerLinkActive="active">
+            Compose Tweet
+          </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="list" class="nav-link" routerLinkActive="active">
+          Community Tweets
+        </a>
+      </li>
+      <li><a href="">Sign Up!</a></li>
+      <li><a href="">Login</a></li>
       </ul>
     </div>
   </nav>
 
-<div>
+<div class="container">
   <router-outlet></router-outlet>
 </div>
+

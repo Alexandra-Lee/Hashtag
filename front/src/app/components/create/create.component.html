@@ -1,3 +1,42 @@
-<p>
-  create works!
-</p>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1">@</span>
+    </div>
+    <textarea class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"></textarea>
+</div>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text">max=140 characters</span>
+  </div>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+</div>
+
+<button type="submit" (click)="addIssue(username.value, tweet_message.value)" [disabled]="createForm.pristine || createForm.invalid">Post Tweet</button> -->
+
+<div class="example-container">
+    <br>
+    <mat-card>
+      <section class="mat-typography">
+        <h3>Compose a New Tweet</h3>
+      </section>
+      <mat-divider></mat-divider>
+      <br>
+      <form [formGroup]="createForm" class="create-form">
+        <div class="example-container">
+          <!-- <mat-form-field appearance="outline">
+            <textarea matInput placeholder=username formControlName="username" #username [(ngModel)]="username"></textarea>
+          </mat-form-field> -->
+          <mat-form-field appearance="outline">
+            <textarea matInput placeholder="my words ..." formControlName="tweet_message" #username [(ngModel)]="tweet_message"></textarea>
+          </mat-form-field>
+          <mat-divider></mat-divider>
+          <br><br>
+        </div>
+          <button mat-raised-button color="primary" routerLink="/list">Back</button>&nbsp;
+          <button type="submit" (click)="addTweet(tweet_message.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Post</button>
+      </form>
+    </mat-card>
+</div>
